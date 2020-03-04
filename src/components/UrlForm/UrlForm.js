@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setUrls } from '../../actions/index'
 import { postUrl } from '../../apiCalls'
 
-class UrlForm extends Component {
+export class UrlForm extends Component {
   constructor(props) {
     super();
     this.props = props;
