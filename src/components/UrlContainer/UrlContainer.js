@@ -3,8 +3,10 @@ import './UrlContainer.css';
 import { connect } from 'react-redux';
 
 
-const UrlContainer = props => {
-  const urlEls = props.urls.map(url => {
+export const UrlContainer = (props) => {
+  let urlEls = []
+  if (props.urls) {
+   urlEls = props.urls.map(url => {
     return (
       <div className="url">
         <h3>{url.title}</h3>
@@ -13,6 +15,7 @@ const UrlContainer = props => {
       </div>
     )
   });
+}
 
   return (
     <section>
