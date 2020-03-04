@@ -1,7 +1,7 @@
 import { UrlContainer, mapStateToProps, mapDispatchToProps } from '../UrlContainer/UrlContainer'
 import { shallow } from 'enzyme';
 import React from 'react';
-import { setUrls } from '../../actions/index'
+import { setUrls, updateUrls } from '../../actions/index'
 
 
 describe('UrlContainer', () => {
@@ -43,6 +43,15 @@ describe('UrlContainer', () => {
       const actionToDispatch = setUrls(mockUrl);
       const mappedProps = mapDispatchToProps(mockDispatch)
       mappedProps.setUrls(mockUrl)
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+    it('should call dispatch with the updateUrls action when updateUrls is called', () => {
+      const mockId = 8
+      const mockDispatch = jest.fn();
+      const actionToDispatch = updateUrls(mockId);
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      mappedProps.updateUrls(mockId)
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })

@@ -29,7 +29,7 @@ deleteUrl = id => {
   if (this.props.urls) {
    urlEls = this.props.urls.map(url => {
     return (
-      <div className="url">
+      <div className="url" key={url.id}>
         <h3>{url.title}</h3>
         <a href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
