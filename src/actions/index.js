@@ -1,4 +1,4 @@
-export const setUrls = (url) => ({
+export const setUrls = (url, title) => ({
   type: 'SET_URLS',
-  url
+  url: {url, title}
 });
