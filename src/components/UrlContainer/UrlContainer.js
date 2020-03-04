@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './UrlContainer.css';
 import { connect } from 'react-redux';
 import { setUrls } from '../../actions/index'
-import { getUrls } from '../../apiCalls'
+import { getUrls, deleteUrl } from '../../apiCalls'
 
 
 export class UrlContainer extends Component {
@@ -27,6 +27,7 @@ export class UrlContainer extends Component {
         <h3>{url.title}</h3>
         <a href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
+        <button >Delete Url</button>
       </div>
     )
   });
