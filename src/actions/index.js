@@ -4,6 +4,6 @@ export const setUrls = (url) => ({
 });
 
 export const updateUrls = id => ({
-  type: 'UPDATE_URL',
+  type: 'UPDATE_URLS',
   id
 })

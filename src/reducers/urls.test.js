@@ -16,4 +16,14 @@ describe('urls reducer tests', () => {
     const result = urls(mockState, mockAction)
     expect(result).toEqual(expected)
   })
+  it('should return the correct state if the action.type is UPDATE_URLS', () => {
+    const mockState = [{longUrl: 'some url #1', id: 9}, {longUrl: 'some url #2', id: 5} ]
+    const mockAction = {
+      type: 'UPDATE_URLS',
+      id: 9
+    }
+    const expected = [{longUrl: 'some url #2', id: 5}]
+    const result = urls(mockState, mockAction)
+    expect(result).toEqual(expected)
+  })
 })

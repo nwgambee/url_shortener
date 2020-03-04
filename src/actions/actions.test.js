@@ -11,10 +11,10 @@ describe('Actions Tests', () => {
     expect(result).toEqual(expectedAction)
   })
 
-  it('should have a type of UPDATE_URL', () => {
+  it('should have a type of UPDATE_URLS', () => {
     const mockId = 93;
     const expectedAction = {
-      type: 'UPDATE_URL',
+      type: 'UPDATE_URLS',
       id: mockId
     }
     const result = actions.updateUrls(mockId)
