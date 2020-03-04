@@ -34,6 +34,6 @@ export const deleteUrl = id => {
               if(!res.ok) {
                 throw Error('Failed to delete shortened URL')
               }
-              return res.json()})
+              return res })
 
 }

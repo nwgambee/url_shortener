@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './UrlContainer.css';
 import { connect } from 'react-redux';
-import { setUrls } from '../../actions/index'
+import { setUrls, updateUrls } from '../../actions/index'
 import { getUrls, deleteUrl } from '../../apiCalls'
 
 
@@ -12,10 +12,16 @@ export class UrlContainer extends Component {
 
  componentDidMount() {
   getUrls()
-    .then(data => data.urls.forEach(url => {
-      this.props.setUrls(url)
-    }))
-    .catch(err => console.error('Error fetching:', err));
+  .then(data => data.urls.forEach(url => {
+    this.props.setUrls(url)
+  }))
+  .catch(err => console.error('Error fetching:', err));
+}
+
+deleteUrl = id => {
+  deleteUrl(id)
+    .then(() => this.props.updateUrls(id))
+    .catch(err => console.error('Error deleting:', err));
 }
  
  render() {
@@ -27,7 +33,7 @@ export class UrlContainer extends Component {
         <h3>{url.title}</h3>
         <a href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
-        <button >Delete Url</button>
+        <button onClick={() => this.deleteUrl(url.id)} >Delete Url</button>
       </div>
     )
   });
@@ -45,7 +51,8 @@ export const mapStateToProps = ({ urls }) => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  setUrls: (url) => dispatch(setUrls(url))
+  setUrls: (url) => dispatch(setUrls(url)),
+  updateUrls: (id) => dispatch(updateUrls(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UrlContainer)
