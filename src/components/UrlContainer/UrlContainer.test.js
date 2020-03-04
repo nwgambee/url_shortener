@@ -7,8 +7,17 @@ import { setUrls } from '../../actions/index'
 describe('UrlContainer', () => {
   let wrapper;
   describe('Method Tests', () => {
-    wrapper = shallow(<UrlContainer />)
-    expect(wrapper).toMatchSnapshot();
+    it('should match the snapshot', () => {
+      wrapper = shallow(<UrlContainer />)
+      expect(wrapper).toMatchSnapshot();
+    })
+    it('deleteUrl should be called when the delete Button is clicked', () => {
+      wrapper = shallow(<UrlContainer urls={[{obj1: 'value', id: 8}, {obj2: 'value', id: 10}]}/>)
+      wrapper.instance().deleteUrl = jest.fn()
+      wrapper.find('.delete-btn').at(0).simulate('click', 8)
+
+      expect(wrapper.instance().deleteUrl).toHaveBeenCalledWith(8)
+    })
   })
 
   describe('MapStateToProps tests', () => {
