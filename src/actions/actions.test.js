@@ -10,4 +10,14 @@ describe('Actions Tests', () => {
     const result = actions.setUrls(mockUrlObject)
     expect(result).toEqual(expectedAction)
   })
+
+  it('should have a type of UPDATE_URL', () => {
+    const mockId = 93;
+    const expectedAction = {
+      type: 'UPDATE_URL',
+      id: mockId
+    }
+    const result = actions.updateUrls(mockId)
+    expect(result).toEqual(expectedAction)
+  })
 })
