@@ -7,7 +7,8 @@ import { setUrls } from '../../actions/index'
 describe('UrlContainer', () => {
   let wrapper;
   describe('Method Tests', () => {
-
+    wrapper = shallow(<UrlContainer />)
+    expect(wrapper).toMatchSnapshot();
   })
 
   describe('MapStateToProps tests', () => {
