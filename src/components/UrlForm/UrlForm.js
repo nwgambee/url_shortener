@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUrls } from '../../actions/index'
+import { postUrl } from '../../apiCalls'
 
 class UrlForm extends Component {
   constructor(props) {
@@ -18,7 +19,9 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.setUrls(this.state.urlToShorten, this.state.title)
+    // this.props.setUrls(this.state.urlToShorten, this.state.title)
+    postUrl(this.state.urlToShorten, this.state.title)
+      .then(data => this.props.setUrls(data))
     
     this.clearInputs();
   }
