@@ -46,6 +46,7 @@ describe('UrlContainer', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     })
+    
     it('should call dispatch with the updateUrls action when updateUrls is called', () => {
       const mockId = 8
       const mockDispatch = jest.fn();
