@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setUrls } from '../../actions/index'
 
 class UrlForm extends Component {
   constructor(props) {
@@ -16,6 +18,8 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.setUrls(this.state.urlToShorten)
+    
     this.clearInputs();
   }
 
@@ -50,4 +54,8 @@ class UrlForm extends Component {
   }
 }
 
-export default UrlForm;
+export const mapDispatchToProps = dispatch => ({
+  setUrls: (url) => dispatch(setUrls(url))
+})
+
+export default connect(null, mapDispatchToProps)(UrlForm)
